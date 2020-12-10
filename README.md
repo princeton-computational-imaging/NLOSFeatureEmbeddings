@@ -4,7 +4,7 @@ This repository contains code for the paper _Learned Feature Embeddings for Non-
 
 ## Results on Real Scenes
 ### Bike 
-|<img src="scenes/bike_1.png" width="200" height="200" style="padding-right:20px;" />|<img src="scenes/bike_2.png" height="200" style="margin: 333px 0px 0px 0px"/>|
+|<img src="scenes/bike_1.png" width="200" height="200" style="padding-right:20px;" />|<img src="scenes/bike_2.png" height="200" style="padding-top:333px;"/>|
 |---|---| 
 
 - Description: A white stone statue captured at approximately 1 m distance from the wall.
