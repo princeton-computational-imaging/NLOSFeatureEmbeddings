@@ -173,7 +173,7 @@ python eval2.py --datafolder YOUR_DATA_FOLDER --mode fk --netfolder network7_256
 
 ### Deep Learning Settings
 
-We provide our reimplementions of different NLOS methods in python and PyTorch. The python implementations are in DL_inference/utils, and the PyTorch implementations are in DL_inference/utils_pytorch. The file name starts with tf. You may directly check tflct.py, tffk.py and tfphasor.py for NLOS methods LCT (Bback-projection included), F-K, and Phasor, respectively.
+We provide our reimplementions of different NLOS methods in python and PyTorch. The python implementations are in DL_inference/utils, and the PyTorch implementations are in DL_inference/utils_pytorch. The file name starts with tf. You may directly check tflct.py, tffk.py and tfphasor.py for NLOS methods LCT (back-projection included), F-K, and Phasor, respectively.
 
 
 ## License  
