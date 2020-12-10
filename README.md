@@ -1,6 +1,6 @@
 # NLOSFeatureEmbeddings Code & Datasets
 
-This repository contains code for the paper _Learned Feature Embeddings for Non-Line-of-Sight Imaging and Recognition_ by Wenzheng Chen, Fangyin Wei, Kyros Kutulakos, Szymon Rusinkiewicz, and Felix Heide. The captured datasets can be downloaded separately from our [project webpage](https://light.cs.princeton.edu/publication/nlos-learnedfeatures/).
+This repository contains code for the paper _Learned Feature Embeddings for Non-Line-of-Sight Imaging and Recognition_ by Wenzheng Chen, Fangyin Wei, Kyros Kutulakos, Szymon Rusinkiewicz, and Felix Heide ([project webpage](https://light.cs.princeton.edu/publication/nlos-learnedfeatures/)).
 
 ## Results on Real Scenes
 
@@ -69,6 +69,12 @@ The code/dataset should be organized as in the following directory tree
     ./cuda-render
         conversion/
         render/
+	./DL_inference
+		inference
+		network7_256
+        re
+        utils
+        utils_pytorch
 	./data
 		bunny-model/
 		img/
@@ -106,11 +112,11 @@ To render the 3D model, first create a cuda proejct in Nsight and put everything
 
 6) SPAD simulation. The rendered hdr file does not have any noise simulation. One can add simple gaussian noise in datalaoder, but we recommand to employ a computional method for spad simulation to synthesize noise. We adopt method from [here](https://graphics.unizar.es/data/spad/).
 
-7) Rendred dataset. We provide a bike dataset with 3000 bike exmaples in ().
+7) Rendered dataset. We provide a bike dataset with 3000 bike exmaples [here](https://drive.google.com/file/d/183VAD_wuVtwkyvfaBoguUHZgHu065BNW/view?usp=sharing).
 
 ### Render Examples
 
-Non-confocal Renders
+Non-confocal Rendering
 <table>
  <tr>
   <td> t=1.2m</td> 
@@ -125,7 +131,7 @@ Non-confocal Renders
 <td><img src="./data/img/confocal/video-confocal-gray-full_180.png" width = "200px" /></td>
    </tr> 
  </table>
- Confocal Renders
+ Confocal Rendering
  <table>
  <tr>
   <td> t=1.2m</td> 
@@ -140,7 +146,7 @@ Non-confocal Renders
 <td><img src="./data/img/non-confocal/video-gray-full_180.png" width = "200px" /></td>
   </tr>
   </table>
-Specular Confocal Renders
+Specular Confocal Rendering
  <table>
   <tr>
   <td> t=1.2m</td> 
@@ -158,6 +164,16 @@ Specular Confocal Renders
 
 
 ### Deep Learning Model
+
+To run the inference model, please download the data and pretrained model [here](https://drive.google.com/drive/folders/17KlddkUmEav-2DeDNYRD013-COqgZc0T?usp=sharing) Next, go to DL_inference/inference folder and run:
+
+```
+python eval2.py --datafolder YOUR_DATA_FOLDER --mode fk --netfolder network7_256 --netsvfolder model10_bike --datanum 800 --dim 3 --frame 128 --grid 128 --tres 2 --h 256 --w 256
+```
+
+### Deep Learning Settings
+
+We provide python and pytorch reimplemented NLOS methods, including FK, LCT and Phasor. The python inplementation is in DL_inference/utils while the pytorch implementations are in DL_inference/utils_pytorch. The file name starts with tf. You may directly check tflct.py, tffk.py and tfphasor.py.
 
 In progress
 
@@ -189,7 +205,7 @@ SOFTWARE.
 **Contact**  
 Questions can be addressed to [Wenzheng Chen](mailto:chen1474147@gmail.com) and [Fangyin Wei](mailto:fwei@princeton.edu).
 
-### citation
+### Citation
 If you find it is useful, please cite
 
 ```
@@ -204,7 +220,3 @@ number = {6},
 journal = {ACM Transactions on Graphics (Proc. SIGGRAPH Asia)}, 
 }
 ```
-
-## tl;dr
-Clone the git repo, download the datasets from our project webpage, and run learning/train.py.
-
