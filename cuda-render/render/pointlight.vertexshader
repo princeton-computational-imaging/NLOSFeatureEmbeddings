@@ -1,0 +1,134 @@
+#version 420 core
+
+// Input vertex data, different for all executions of this shader.
+layout(location = 0) in vec3 vertexPosition_modelspace;
+layout(location = 1) in vec3 vertexNormal_modelspace;
+layout(location = 2) in vec2 vertexUV;
+
+// Output data ; will be interpolated for each fragment.
+out vec2 UV;
+out vec3 Normal_cameraspace;
+out vec3 LightDirection_cameraspace;
+
+// Values that stay constant for the whole mesh.
+uniform mat4 M;
+uniform mat4 V;
+uniform mat4 P;
+
+uniform vec3 lightPosition_modelspace;
+
+uniform float istex;
+uniform float isprojection;
+uniform float isconfocal;
+
+out float lp;
+out float pv;
+out float costerm;
+out float dist;
+out float distfactor;
+
+void main(){
+	
+	// UV of the vertex. No special space for this one.
+	if (istex > 0)
+	{
+		UV = vertexUV;
+	}
+	else
+	{
+		UV = vec2(1, 1);
+	}
+	
+	
+	////////////////////////////////////////////////////////////
+	// point projection
+	if (isprojection > 0)
+	{
+	
+	// model view
+	vec4 p0 = M * vec4(vertexPosition_modelspace, 1);
+	
+	// camera view
+	// note that, we didn;t really rotate the point
+	// acutally, the change of light direction is 
+	// simulated by rotate the camera
+	vec3 p1 = p0.xyz - vec3(0, 0, 1);
+	vec4 p2 = V * vec4(p1, 0);
+	vec3 p3 = p2.xyz + vec3(0, 0, 1);
+	
+	// projection view
+	vec4 p4 = P * vec4(p3, 1);
+	gl_Position =  p4;
+	
+	// calculate the projected point on the wall
+	float k, x, y;
+	k = (p0.z - 1) / V[2][2];
+	x = p0.x - k * V[0][2];
+	y = p0.y - k * V[1][2];
+	gl_Position.x = x;
+	gl_Position.y = y;
+	
+	// finally projected point on the wall
+	vec3 pfinal = vec3(x, y, 1);
+	
+	// Normal of the the vertex, in camera space
+	Normal_cameraspace = ( V * M * vec4(vertexNormal_modelspace, 0)).xyz; // Only correct if ModelMatrix does not scale the model ! Use its inverse transpose if not.
+	
+	// Vector that goes from the vertex to the camera, in camera space.
+	vec3 LightDirection_modelspace = lightPosition_modelspace - p0.xyz;
+	if (isconfocal > 0)
+	{
+	LightDirection_modelspace = pfinal - p0.xyz;
+	}
+	LightDirection_cameraspace = ( V * vec4(LightDirection_modelspace, 0)).xyz;
+	
+	// distance factor
+	// pv = k;
+	pv = length(pfinal - p0.xyz);
+	lp = length(LightDirection_modelspace);
+	costerm = V[2][2];
+	
+	// distance
+	// between 0 and 1
+	dist = 1.0f / (1.0f + lp + pv);
+	distfactor = 0.9f;
+	}
+	
+	////////////////////////////////////////////////////////////////
+	else // normal render
+	{
+	
+	// model view
+	vec4 p0 = M * vec4(vertexPosition_modelspace, 1);
+	
+	// camera view
+	vec3 p1 = p0.xyz;
+	vec4 p2 = V * vec4(p1, 0);
+	vec3 p3 = p2.xyz;
+	
+	// projection view
+	vec4 p4 = P * vec4(p3, 1);
+	gl_Position =  p4;
+	
+	// Normal of the the vertex, in camera space
+	Normal_cameraspace = ( V * M * vec4(vertexNormal_modelspace, 0)).xyz; // Only correct if ModelMatrix does not scale the model ! Use its inverse transpose if not.
+	
+	// Vector that goes from the vertex to the camera, in camera space.
+	vec3 LightDirection_modelspace = lightPosition_modelspace - p0.xyz;
+	LightDirection_cameraspace = ( V * vec4(LightDirection_modelspace, 0)).xyz;
+	
+	// distance factor
+	// no distance factor
+	// pv = 1.0f;
+	// lp = 1.0f;
+	// costerm = 1.0f;
+	// dist = 1.0f;
+	// distfactor = 1.0f;
+	pv = 1.0f - p3.z;
+	lp = length(LightDirection_modelspace);
+	costerm = 1.0f;
+	dist = 1.0f;
+	distfactor = 0.9f;
+	}
+}
+
