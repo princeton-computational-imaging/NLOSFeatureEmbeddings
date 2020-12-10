@@ -187,7 +187,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 **Contact**  
-Questions can be addressed to [Wenzheng Chen](mailto:chen1474147@gmail.com)
+Questions can be addressed to [Wenzheng Chen](mailto:chen1474147@gmail.com).
 
 ### citation
 If you find it is useful, please cite
