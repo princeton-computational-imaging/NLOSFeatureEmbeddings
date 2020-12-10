@@ -4,8 +4,6 @@ This repository contains code for the paper _Learned Feature Embeddings for Non-
 
 ## Results on Real Scenes
 
-The realistic scenes are captured by [this work](https://github.com/computational-imaging/nlos-fk).
-
 ### Bike 
 |<img src="scenes/bike_1.png" width="200" height="200" style="padding-right:20px;" />|<img src="scenes/bike_2.png" height="200" style="padding-top:333px;"/>|
 |---|---| 
@@ -57,10 +55,12 @@ The realistic scenes are captured by [this work](https://github.com/computationa
 |---|---|
 
 - Description: The teaser scene used in the paper which includes a number of objects, including a bookshelf, statue, dragon, and discoball.
-- Resolution: 512 x 512
+- Resolution: 512 x 51
 - Scanned Area: 2 m x 2 m planar wall
 - Integration times: 10 min., 30 min., 60 min., 180 min.
 
+
+The realistic scenes above are captured by [this work](https://github.com/computational-imaging/nlos-fk).
 
 ## Description of Files
 
@@ -70,24 +70,24 @@ The code/dataset should be organized as in the following directory tree
         conversion/
         render/
 	./DL_inference
-		inference
-		network7_256
+        inference
+        network7_256
         re
         utils
         utils_pytorch
 	./data
-		bunny-model/
-		img/
-		LICENSE
-		README.md
+        bunny-model/
+        img/
+        LICENSE
+        README.md
 
 ## Usage
 
-It contains 2 part, the first part is how to render data and the second is how to train the neural network model.
+The code base contains two parts. The first part is how to render data and the second is how to train and test the neural network models.
  
-### Render
+### Rendering
 
-Please check the cuda-render folder. We recommand to open it in Nsight(tested). Other IDE should also work. To compile the code, please install cuda(tested for cuda 9.0), libglm, glew, glfw and opencv(tested for opencv 3.4).
+Please check the cuda-render folder. We recommand to open it in Nsight (tested). Other IDE should also work. To compile the code, please install cuda (tested for cuda 9.0), libglm, glew, glfw and opencv (tested for opencv 3.4).
 
 ```
 sudo apt-get install libglm-dev
@@ -98,23 +98,23 @@ sudo apt-get install libopencv-dev
 
 To render the 3D model, first create a cuda proejct in Nsight and put everything in cuda-render/render folder to the created project and compile. To successfully run the code, modify the folder path and data saving path in [main.cpp](https://github.com/princeton-computational-imaging/NLOSFeatureEmbeddings/blob/6274ff26c31748c760414664c9f3655d7874de1a/cuda-render/render/src/main.cpp#L32). We provide a bunny model for test.
 
-### Render Settings
+### Rendering Settings
 
-1) Change 3D model location and scale.  We change model size in two places. When we load a 3D model, we will normalize it by moving it to origin and loading with specific scale. The code can be modified [here](https://github.com/princeton-computational-imaging/NLOSFeatureEmbeddings/blob/6274ff26c31748c760414664c9f3655d7874de1a/cuda-render/render/src/display_4_loaddata.cpp#L337). Nest, when we render model, we could change the model location and rotation [here](https://github.com/princeton-computational-imaging/NLOSFeatureEmbeddings/blob/6274ff26c31748c760414664c9f3655d7874de1a/cuda-render/render/src/display_6_render.cpp#L361).
+1) Change 3D model location and scale.  We change the model size in two places. When we load a 3D model, we normalize it by moving it to the origin and load with a specific scale. The code can be modified [here](https://github.com/princeton-computational-imaging/NLOSFeatureEmbeddings/blob/6274ff26c31748c760414664c9f3655d7874de1a/cuda-render/render/src/display_4_loaddata.cpp#L337). Next, when we render the model, we may change the model location and rotation [here](https://github.com/princeton-computational-imaging/NLOSFeatureEmbeddings/blob/6274ff26c31748c760414664c9f3655d7874de1a/cuda-render/render/src/display_6_render.cpp#L361).
 
-2) 3D model normal. For the bunny model, we use point normals. We emperically find it is better to use face normal for shapenet data. Please change it [here](https://github.com/princeton-computational-imaging/NLOSFeatureEmbeddings/blob/6274ff26c31748c760414664c9f3655d7874de1a/cuda-render/render/src/display_4_loaddata.cpp#L464).
+2) 3D model normal. For the bunny model, we use point normals. We emperically find tht it is better to use face normals for ShapeNet data set. You can change it [here](https://github.com/princeton-computational-imaging/NLOSFeatureEmbeddings/blob/6274ff26c31748c760414664c9f3655d7874de1a/cuda-render/render/src/display_4_loaddata.cpp#L464).
 
-3) Confocal/Non-confocal renderings. Our renderings supports both confocal and non-confocal settings. One can change it [here](https://github.com/princeton-computational-imaging/NLOSFeatureEmbeddings/blob/6274ff26c31748c760414664c9f3655d7874de1a/cuda-render/render/src/display_6_render.cpp#L613), hwere conf=0 means non-confocal while conf=1 means confocal.
+3) Confocal/Non-confocal renderings. Our rendering algorithm supports both confocal and non-confocal settings. One can change it [here](https://github.com/princeton-computational-imaging/NLOSFeatureEmbeddings/blob/6274ff26c31748c760414664c9f3655d7874de1a/cuda-render/render/src/display_6_render.cpp#L613), where conf=0 means non-confocal and conf=1 means confocal.
 
-4) Specular rendering. Our renderings supports both diffuse and specular materials. To render a specular object(metal material), change the switch [here](https://github.com/princeton-computational-imaging/NLOSFeatureEmbeddings/blob/6274ff26c31748c760414664c9f3655d7874de1a/cuda-render/render/src/display_6_render.cpp#L693).
+4) Specular rendering. Our rendering algorithm supports both diffuse and specular materials. To render a specular object (metal material), change the switch [here](https://github.com/princeton-computational-imaging/NLOSFeatureEmbeddings/blob/6274ff26c31748c760414664c9f3655d7874de1a/cuda-render/render/src/display_6_render.cpp#L693).
 
-5) video conversion. To convert rendered hdrfile to a video, we provide a scripts in cuda-render/conversion. Please change the render folder [here](https://github.com/wenzhengchen/Learned-Feature-Embeddings-for-Non-Line-of-Sight-Imaging-and-Recognition/blob/dc12a8c907c7cd6392b7d3a0717ce650b07930fb/cuda-render/conversion/preprocess_hdr2video.py#L284) then run the python scrips. It will generate a video which is much smaller and easier to load in traning a deep leaning model.
+5) Video conversion. To convert a rendered hdrfile to a video, we provide a script in cuda-render/conversion. Please change the render folder [here](https://github.com/wenzhengchen/Learned-Feature-Embeddings-for-Non-Line-of-Sight-Imaging-and-Recognition/blob/dc12a8c907c7cd6392b7d3a0717ce650b07930fb/cuda-render/conversion/preprocess_hdr2video.py#L284) then run the python script. It will generate a video which is of much smaller size and easier to load to train the deep leaning model.
 
-6) SPAD simulation. The rendered hdr file does not have any noise simulation. One can add simple gaussian noise in datalaoder, but we recommand to employ a computional method for spad simulation to synthesize noise. We adopt method from [here](https://graphics.unizar.es/data/spad/).
+6) SPAD simulation. The rendered hdr file does not have any noise simulation. One can add simple Gaussian noise in datalaoder, but we recommand to employ a computational method for spad simulation to synthesize noise. We adopt the method from [here](https://graphics.unizar.es/data/spad/).
 
-7) Rendered dataset. We provide a bike dataset with 3000 bike exmaples [here](https://drive.google.com/file/d/183VAD_wuVtwkyvfaBoguUHZgHu065BNW/view?usp=sharing).
+7) Rendered dataset. We provide a motorbike dataset with 3000 motorbike exmaples [here](https://drive.google.com/file/d/183VAD_wuVtwkyvfaBoguUHZgHu065BNW/view?usp=sharing).
 
-### Render Examples
+### Rendering Examples
 
 Non-confocal Rendering
 <table>
@@ -165,7 +165,7 @@ Specular Confocal Rendering
 
 ### Deep Learning Model
 
-To run the inference model, please download the data and pretrained model [here](https://drive.google.com/drive/folders/17KlddkUmEav-2DeDNYRD013-COqgZc0T?usp=sharing) Next, go to DL_inference/inference folder and run:
+To run the inference model, please first download the data and pretrained model [here](https://drive.google.com/drive/folders/17KlddkUmEav-2DeDNYRD013-COqgZc0T?usp=sharing). Next, go to DL_inference/inference folder and run:
 
 ```
 python eval2.py --datafolder YOUR_DATA_FOLDER --mode fk --netfolder network7_256 --netsvfolder model10_bike --datanum 800 --dim 3 --frame 128 --grid 128 --tres 2 --h 256 --w 256
@@ -173,9 +173,8 @@ python eval2.py --datafolder YOUR_DATA_FOLDER --mode fk --netfolder network7_256
 
 ### Deep Learning Settings
 
-We provide python and pytorch reimplemented NLOS methods, including FK, LCT and Phasor. The python inplementation is in DL_inference/utils while the pytorch implementations are in DL_inference/utils_pytorch. The file name starts with tf. You may directly check tflct.py, tffk.py and tfphasor.py.
+We provide our reimplementions of different NLOS methods in python and PyTorch. The python implementations are in DL_inference/utils, and the PyTorch implementations are in DL_inference/utils_pytorch. The file name starts with tf. You may directly check tflct.py, tffk.py and tfphasor.py for NLOS methods LCT (Bback-projection included), F-K, and Phasor, respectively.
 
-In progress
 
 **License**  
 The code and dataset are licensed under the following license:
