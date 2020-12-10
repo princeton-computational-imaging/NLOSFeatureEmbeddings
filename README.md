@@ -1,8 +1,11 @@
 # NLOSFeatureEmbeddings Code & Datasets
 
-This repository contains code for the paper _Learned Feature Embeddings for Non-Line-of-Sight Imaging and Recognition_ by Wenzheng Chen, Fangyin Wei, Kyros Kutulakos, Szymon Rusinkiewicz, and Felix Heide. The captured datasets can be downloaded separately from our [project webpage]().
+This repository contains code for the paper _Learned Feature Embeddings for Non-Line-of-Sight Imaging and Recognition_ by Wenzheng Chen, Fangyin Wei, Kyros Kutulakos, Szymon Rusinkiewicz, and Felix Heide. The captured datasets can be downloaded separately from our [project webpage](https://light.cs.princeton.edu/publication/nlos-learnedfeatures/).
 
 ## Results on Real Scenes
+
+The realistic scenes are captured by [this work](https://github.com/computational-imaging/nlos-fk).
+
 ### Bike 
 |<img src="scenes/bike_1.png" width="200" height="200" style="padding-right:20px;" />|<img src="scenes/bike_2.png" height="200" style="padding-top:333px;"/>|
 |---|---| 
@@ -87,7 +90,7 @@ sudo apt-get install libglfw3-dev
 sudo apt-get install libopencv-dev
 ```
 
-To render the 3D model, first create a cuda proejct in Nsight and put everything in cuda-render/render folder to the created project and compile. To successfully run the code, modify the folder path and data saving path in main.cpp (https://github.com/princeton-computational-imaging/NLOSFeatureEmbeddings/blob/6274ff26c31748c760414664c9f3655d7874de1a/cuda-render/render/src/main.cpp#L32). We provide a bunny model for test.
+To render the 3D model, first create a cuda proejct in Nsight and put everything in cuda-render/render folder to the created project and compile. To successfully run the code, modify the folder path and data saving path in [main.cpp](https://github.com/princeton-computational-imaging/NLOSFeatureEmbeddings/blob/6274ff26c31748c760414664c9f3655d7874de1a/cuda-render/render/src/main.cpp#L32). We provide a bunny model for test.
 
 ### Render Settings
 
