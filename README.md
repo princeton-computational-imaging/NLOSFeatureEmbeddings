@@ -4,7 +4,7 @@ This repository contains code for the paper _Learned Feature Embeddings for Non-
 
 ## Results on Real Scenes
 ### Bike 
-|<img src="scenes/bike_1.png" width="200" height="200" style="padding-right:20px;" />|<img src="scenes/bike_2.png" height="200" />|
+|<img src="scenes/bike_1.png" width="200" height="200" style="padding-right:20px;" />|<img src="scenes/bike_2.png" height="200" style="margin-left:-333px;margin-right:-333px"/>|
 |---|---| 
 
 - Description: A white stone statue captured at approximately 1 m distance from the wall.
@@ -50,7 +50,7 @@ This repository contains code for the paper _Learned Feature Embeddings for Non-
 - Integration times: 10 min., 30 min., 60 min., 180 min.
 
 ### Teaser 
-|<img src="scenes/teaser_1.png" height="200" style="padding-right:20px;" />|<img src="scenes/teaser_2.png" height="200" style="padding-right:20px;" />|<img src="scenes/teaser_3.png" height="200" />|
+|<img src="scenes/teaser_1.png" height="200" style="padding-right:20px;" />|<img src="scenes/teaser_2.png" height="200" style="padding-right:20px;" />|
 |---|---|---|
 
 - Description: The teaser scene used in the paper which includes a number of objects, including a bookshelf, statue, dragon, and discoball.
