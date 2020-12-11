@@ -5,7 +5,8 @@ This repository contains code for the paper _Learned Feature Embeddings for Non-
 ## Reconstruction Results on Real Experimental Scenes
 
 ### Bike 
-|<img src="scenes/bike_1.png" width="200" height="200" style="padding-right:20px;" />|<img src="scenes/bike_2.mp4" height="200"/>|
+|<img src="scenes/bike_1.png" width="200" height="200" style="padding-right:20px;" />|<video height="200" autoplay>
+  <source src="scenes/bike_2.mp4" type="video/mp4"></video>|
 |---|---| 
 
 - Description: A bike captured at approximately 1 m distance from the wall.
@@ -75,6 +76,7 @@ accurate color reconstruction.
 <img src="scenes/detection.png" height="400" style="padding-right:20px;" />
 
 Qualitative end-to-end detection results on synthetic (top) and real (bottom) data.
+The proposed method correctly predicts the bounding boxes for different classes with various color, shape, and pose. 
 The model is only trained on synthetic data. Evaluation of such a model on real data 
 validates its generalization capability.
 
