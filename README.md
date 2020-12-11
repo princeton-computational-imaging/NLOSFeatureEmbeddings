@@ -5,10 +5,10 @@ This repository contains code for the paper _Learned Feature Embeddings for Non-
 ## Reconstruction Results on Real Scenes
 
 ### Bike 
-|<img src="scenes/bike_1.png" width="200" height="200" style="padding-right:20px;" />|<img src="scenes/bike_2.png" height="200" style="padding-top:333px;"/>|
+|<img src="scenes/bike_1.png" width="200" height="200" style="padding-right:20px;" />|<img src="scenes/bike_2.mov" height="200"/>|
 |---|---| 
 
-- Description: A white stone statue captured at approximately 1 m distance from the wall.
+- Description: A bike captured at approximately 1 m distance from the wall.
 - Resolution: 512 x 512
 - Scanned Area: 2 m x 2 m planar wall
 - Integration times: 10 min., 30 min., 60 min., 180 min.
@@ -55,18 +55,18 @@ This repository contains code for the paper _Learned Feature Embeddings for Non-
 |---|---|
 
 - Description: The teaser scene used in the paper which includes a number of objects, including a bookshelf, statue, dragon, and discoball.
-- Resolution: 512 x 51
+- Resolution: 512 x 512
 - Scanned Area: 2 m x 2 m planar wall
 - Integration times: 10 min., 30 min., 60 min., 180 min.
 
 
 The realistic scenes above are captured by [this work](https://github.com/computational-imaging/nlos-fk).
 
-## Reconstruction Restuls on Synthetic Scenes
+## Reconstruction Results on Synthetic Scenes
 
 <img src="scenes/compare-synthetic.png" height="400" style="padding-right:20px;" />
 
-Qualitative Evaluation for NLOS 2D Imaging. Compared with F-K, LCT and filtered back-projection (BP), we observe that the proposed method
+Qualitative Evaluation for NLOS 2D Imaging. Compared with F-K, LCT, and filtered back-projection (BP), we observe that the proposed method
 is able to reconstruct 2D images with clearer boundaries while achieving more
 accurate color rendering.
 
@@ -82,14 +82,14 @@ Qualitative end-to-end detection results on synthetic and real data.
 
 
 We compare the classification accuracy of the proposed method, learned to
-classifying hidden scenes with a monolithic end-to-end network, and sequential NLOS image classification baselines.
+classify hidden scenes with a monolithic end-to-end network, and sequential NLOS image classification baselines.
 The last row in the table reports the confidence scores for the experimental
 bike measurement. We note that the proposed model recognizes it as a motorbike
 with more than 66% probability.
 
 ## Description of Files
 
-The code/dataset should be organized as in the following directory tree
+The code is organized as in the following directory tree
 
     ./cuda-render
         conversion/
@@ -108,11 +108,14 @@ The code/dataset should be organized as in the following directory tree
 
 ## Usage
 
-The code base contains two parts. The first part is how to render data and the second is how to train and test the neural network models.
+The code base contains two parts. The first part is how to render data and 
+the second is how to train and test the neural network models.
  
 ### Rendering
 
-Please check the cuda-render folder. We recommand to open it in Nsight (tested). Other IDE should also work. To compile the code, please install cuda (tested for cuda 9.0), libglm, glew, glfw and opencv (tested for opencv 3.4).
+Please check the cuda-render folder. We recommend to open it in Nsight (tested). 
+Other IDE should also work. To compile the code, please install cuda (tested for cuda 9.0), 
+libglm, glew, glfw, and opencv (tested for opencv 3.4).
 
 ```
 sudo apt-get install libglm-dev
@@ -127,7 +130,7 @@ To render the 3D model, first create a cuda proejct in Nsight and put everything
 
 1) Change 3D model location and scale.  We change the model size in two places. When we load a 3D model, we normalize it by moving it to the origin and load with a specific scale. The code can be modified [here](https://github.com/princeton-computational-imaging/NLOSFeatureEmbeddings/blob/6274ff26c31748c760414664c9f3655d7874de1a/cuda-render/render/src/display_4_loaddata.cpp#L337). Next, when we render the model, we may change the model location and rotation [here](https://github.com/princeton-computational-imaging/NLOSFeatureEmbeddings/blob/6274ff26c31748c760414664c9f3655d7874de1a/cuda-render/render/src/display_6_render.cpp#L361).
 
-2) 3D model normal. For the bunny model, we use point normals. We emperically find tht it is better to use face normals for ShapeNet data set. You can change it [here](https://github.com/princeton-computational-imaging/NLOSFeatureEmbeddings/blob/6274ff26c31748c760414664c9f3655d7874de1a/cuda-render/render/src/display_4_loaddata.cpp#L464).
+2) 3D model normal. For the bunny model, we use point normals. We empirically find that it is better to use face normals for ShapeNet data set. You can change it [here](https://github.com/princeton-computational-imaging/NLOSFeatureEmbeddings/blob/6274ff26c31748c760414664c9f3655d7874de1a/cuda-render/render/src/display_4_loaddata.cpp#L464).
 
 3) Confocal/Non-confocal renderings. Our rendering algorithm supports both confocal and non-confocal settings. One can change it [here](https://github.com/princeton-computational-imaging/NLOSFeatureEmbeddings/blob/6274ff26c31748c760414664c9f3655d7874de1a/cuda-render/render/src/display_6_render.cpp#L613), where conf=0 means non-confocal and conf=1 means confocal.
 
