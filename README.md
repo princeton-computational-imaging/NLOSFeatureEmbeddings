@@ -66,17 +66,19 @@ The realistic scenes above are captured by [this work](https://github.com/comput
 
 <img src="scenes/compare-synthetic.png" height="400" style="padding-right:20px;" />
 
-Qualitative Evaluation for NLOS 2D Imaging
+Qualitative Evaluation for NLOS 2D Imaging. Compared with F-K, LCT and filtered back-projection (BP), we observe that the proposed method
+is able to reconstruct 2D images with clearer boundaries while achieving more
+accurate color rendering.
 
 ## NLOS 2.5D Object Detection
 
 <img src="scenes/detection.png" height="400" style="padding-right:20px;" />
 
-End-to-end detection results on synthetic and real data
+Qualitative end-to-end detection results on synthetic and real data.
 
 ## NLOS Classification
 
-<img src="scenes/classification-table.png" height="200" style="padding-right:20px;" />
+<img src="scenes/classification-table.png" height="170" style="padding-right:20px;" />
 
 
 We compare the classification accuracy of the proposed method, learned to
