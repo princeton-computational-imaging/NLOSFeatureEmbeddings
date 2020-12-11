@@ -2,7 +2,7 @@
 
 This repository contains code for the paper _Learned Feature Embeddings for Non-Line-of-Sight Imaging and Recognition_ by Wenzheng Chen, Fangyin Wei, Kyros Kutulakos, Szymon Rusinkiewicz, and Felix Heide ([project webpage](https://light.cs.princeton.edu/publication/nlos-learnedfeatures/)).
 
-## Results on Real Scenes
+## Reconstruction Results on Real Scenes
 
 ### Bike 
 |<img src="scenes/bike_1.png" width="200" height="200" style="padding-right:20px;" />|<img src="scenes/bike_2.png" height="200" style="padding-top:333px;"/>|
@@ -62,6 +62,29 @@ This repository contains code for the paper _Learned Feature Embeddings for Non-
 
 The realistic scenes above are captured by [this work](https://github.com/computational-imaging/nlos-fk).
 
+## Reconstruction Restuls on Synthetic Scenes
+
+<img src="scenes/compare-synthetic.png" height="400" style="padding-right:20px;" />
+
+Qualitative Evaluation for NLOS 2D Imaging
+
+## NLOS 2.5D Object Detection
+
+<img src="scenes/detection.png" height="400" style="padding-right:20px;" />
+
+End-to-end detection results on synthetic and real data
+
+## NLOS Classification
+
+<img src="scenes/classification-table.png" height="200" style="padding-right:20px;" />
+
+
+We compare the classification accuracy of the proposed method, learned to
+classifying hidden scenes with a monolithic end-to-end network, and sequential NLOS image classification baselines.
+The last row in the table reports the confidence scores for the experimental
+bike measurement. We note that the proposed model recognizes it as a motorbike
+with more than 66% probability.
+
 ## Description of Files
 
 The code/dataset should be organized as in the following directory tree
@@ -70,11 +93,11 @@ The code/dataset should be organized as in the following directory tree
         conversion/
         render/
 	./DL_inference
-        inference
-        network7_256
-        re
-        utils
-        utils_pytorch
+        inference/
+        network7_256/
+        re/
+        utils/
+        utils_pytorch/
 	./data
         bunny-model/
         img/
