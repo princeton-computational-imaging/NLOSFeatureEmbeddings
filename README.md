@@ -11,16 +11,16 @@ This repository contains code for the paper _Learned Feature Embeddings for Non-
 - Description: A bike captured at approximately 1 m distance from the wall.
 - Resolution: 512 x 512
 - Scanned Area: 2 m x 2 m planar wall
-- Integration times: 10 min., 30 min., 60 min., 180 min.
+- Integration Time: 180 min.
 
-### Discoball 
+### Disco Ball 
 |<img src="scenes/discoball_1.png" width="200" height="200" style="padding-right:20px;" />|<img src="scenes/discoball_2.mov"  height="200" />|
 |---|---|
 
-- Description: A specular disoball captured at approximately 1 m distance from the wall.
+- Description: A specular disco ball captured at approximately 1 m distance from the wall.
 - Resolution: 512 x 512
 - Scanned Area: 2 m x 2 m planar wall
-- Integration times: 10 min., 30 min., 60 min., 180 min.
+- Integration Time: 180 min.
 
 
 ### Dragon 
@@ -30,7 +30,7 @@ This repository contains code for the paper _Learned Feature Embeddings for Non-
 - Description: A glossy dragon captured at approximately 1 m distance from the wall.
 - Resolution: 512 x 512
 - Scanned Area: 2 m x 2 m planar wall
-- Integration times: 15 sec., 1 min., 2 min., 10 min., 30 min., 60 min., 180 min.
+- Integration Time: 180 min.
 
 ### Resolution 
 |<img src="scenes/resolution_1.png" height="200" style="padding-right:20px;" />|<img src="scenes/resolution_2.mov" height="200" />|
@@ -39,7 +39,7 @@ This repository contains code for the paper _Learned Feature Embeddings for Non-
 - Description: A resolution chart captured at approximately 1 m distance from the wall.
 - Resolution: 512 x 512
 - Scanned Area: 2 m x 2 m planar wall
-- Integration times: 10 min., 30 min., 60 min., 180 min.
+- Integration Time: 180 min.
 
 ### Statue 
 |<img src="scenes/statue_1.png" height="200" style="padding-right:20px;" />|<img src="scenes/statue_2.mov" height="200" />|
@@ -48,16 +48,16 @@ This repository contains code for the paper _Learned Feature Embeddings for Non-
 - Description: A white stone statue captured at approximately 1 m distance from the wall.
 - Resolution: 512 x 512
 - Scanned Area: 2 m x 2 m planar wall
-- Integration times: 10 min., 30 min., 60 min., 180 min.
+- Integration Time: 180 min.
 
 ### Teaser 
 |<img src="scenes/teaser_1.png" height="200" style="padding-right:20px;" />|<img src="scenes/teaser_2.mov" height="200" style="padding-right:20px;" />|
 |---|---|
 
-- Description: The teaser scene used in the paper which includes a number of objects, including a bookshelf, statue, dragon, and discoball.
+- Description: The teaser scene used in the paper which includes a number of objects, including a bookshelf, statue, dragon, and disco ball.
 - Resolution: 512 x 512
 - Scanned Area: 2 m x 2 m planar wall
-- Integration times: 10 min., 30 min., 60 min., 180 min.
+- Integration Time: 180 min.
 
 
 The realistic scenes above are captured by [this work](https://github.com/computational-imaging/nlos-fk).
@@ -113,7 +113,7 @@ the second is how to train and test the neural network models.
  
 ### Rendering
 
-Please check the cuda-render folder. We recommend to open it in Nsight (tested). 
+Please check the cuda-render folder. We recommend opening it in Nsight (tested). 
 Other IDE should also work. To compile the code, please install cuda (tested for cuda 9.0), 
 libglm, glew, glfw, and opencv (tested for opencv 3.4).
 
@@ -136,9 +136,9 @@ To render the 3D model, first create a cuda proejct in Nsight and put everything
 
 4) Specular rendering. Our rendering algorithm supports both diffuse and specular materials. To render a specular object (metal material), change the switch [here](https://github.com/princeton-computational-imaging/NLOSFeatureEmbeddings/blob/6274ff26c31748c760414664c9f3655d7874de1a/cuda-render/render/src/display_6_render.cpp#L693).
 
-5) Video conversion. To convert a rendered hdr file to a video, we provide a script in cuda-render/conversion. Please change the render folder [here](https://github.com/wenzhengchen/Learned-Feature-Embeddings-for-Non-Line-of-Sight-Imaging-and-Recognition/blob/dc12a8c907c7cd6392b7d3a0717ce650b07930fb/cuda-render/conversion/preprocess_hdr2video.py#L284) then run the python script. It will generate a video which is of much smaller size and easier to load to train the deep learning model.
+5) Video conversion. To convert a rendered hdr file to a video, we provide a script in cuda-render/conversion. Please change the render folder [here](https://github.com/wenzhengchen/Learned-Feature-Embeddings-for-Non-Line-of-Sight-Imaging-and-Recognition/blob/dc12a8c907c7cd6392b7d3a0717ce650b07930fb/cuda-render/conversion/preprocess_hdr2video.py#L284) then run the python script. It will generate a video which is of a much smaller size and easier to load to train the deep learning model.
 
-6) SPAD simulation. The rendered hdr file does not have any noise simulation. One can add simple Gaussian noise in dataloader, but we recommend to employ a computational method for spad simulation to synthesize noise. We adopt the method from [here](https://graphics.unizar.es/data/spad/).
+6) SPAD simulation. The rendered hdr file does not have any noise simulation. One can add simple Gaussian noise in dataloader, but we recommend employing a computational method for spad simulation to synthesize noise. We adopt the method from [here](https://graphics.unizar.es/data/spad/).
 
 7) Rendered dataset. We provide a motorbike dataset with 3000 motorbike examples [here](https://drive.google.com/file/d/183VAD_wuVtwkyvfaBoguUHZgHu065BNW/view?usp=sharing).
 
@@ -193,7 +193,7 @@ Specular Confocal Rendering
 
 ### Deep Learning Model
 
-To run the inference model, please first download the data and pretrained model [here](https://drive.google.com/drive/folders/17KlddkUmEav-2DeDNYRD013-COqgZc0T?usp=sharing). Next, go to DL_inference/inference folder and run:
+To run the inference model, please first download the data and pre-trained model [here](https://drive.google.com/drive/folders/17KlddkUmEav-2DeDNYRD013-COqgZc0T?usp=sharing). Next, go to DL_inference/inference folder and run:
 
 ```
 python eval2.py --datafolder YOUR_DATA_FOLDER --mode fk --netfolder network7_256 --netsvfolder model10_bike --datanum 800 --dim 3 --frame 128 --grid 128 --tres 2 --h 256 --w 256
@@ -201,7 +201,7 @@ python eval2.py --datafolder YOUR_DATA_FOLDER --mode fk --netfolder network7_256
 
 ### Deep Learning Settings
 
-We provide our reimplementations of different NLOS methods in python and PyTorch. The python implementations are in DL_inference/utils, and the PyTorch implementations are in DL_inference/utils_pytorch. The file name starts with tf. You may directly check tflct.py, tffk.py and tfphasor.py for NLOS methods LCT (back-projection included), F-K, and Phasor, respectively.
+We provide our reimplementations of different NLOS methods in python and PyTorch. The python implementations are in DL_inference/utils, and the PyTorch implementations are in DL_inference/utils_pytorch. The file name starts with tf. You may directly check tflct.py, tffk.py, and tfphasor.py for NLOS methods LCT (back-projection included), F-K, and Phasor, respectively.
 
 
 ## License  
