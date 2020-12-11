@@ -2,10 +2,10 @@
 
 This repository contains code for the paper _Learned Feature Embeddings for Non-Line-of-Sight Imaging and Recognition_ by Wenzheng Chen, Fangyin Wei, Kyros Kutulakos, Szymon Rusinkiewicz, and Felix Heide ([project webpage](https://light.cs.princeton.edu/publication/nlos-learnedfeatures/)).
 
-## Reconstruction Results on Real Scenes
+## Reconstruction Results on Real Experimental Scenes
 
 ### Bike 
-|<img src="scenes/bike_1.png" width="200" height="200" style="padding-right:20px;" />|<img src="scenes/bike_2.mov" height="200"/>|
+|<img src="scenes/bike_1.png" width="200" height="200" style="padding-right:20px;" />|<img src="scenes/bike_2.mp4" height="200"/>|
 |---|---| 
 
 - Description: A bike captured at approximately 1 m distance from the wall.
@@ -14,7 +14,7 @@ This repository contains code for the paper _Learned Feature Embeddings for Non-
 - Integration Time: 180 min.
 
 ### Disco Ball 
-|<img src="scenes/discoball_1.png" width="200" height="200" style="padding-right:20px;" />|<img src="scenes/discoball_2.mov"  height="200" />|
+|<img src="scenes/discoball_1.png" width="200" height="200" style="padding-right:20px;" />|<img src="scenes/discoball_2.mp4"  height="200" />|
 |---|---|
 
 - Description: A specular disco ball captured at approximately 1 m distance from the wall.
@@ -24,7 +24,7 @@ This repository contains code for the paper _Learned Feature Embeddings for Non-
 
 
 ### Dragon 
-|<img src="scenes/dragon_1.png" width="200" height="200" style="padding-right:20px;" />|<img src="scenes/dragon_2.mov" height="200" />|
+|<img src="scenes/dragon_1.png" width="200" height="200" style="padding-right:20px;" />|<img src="scenes/dragon_2.mp4" height="200" />|
 |---|---|
 
 - Description: A glossy dragon captured at approximately 1 m distance from the wall.
@@ -33,7 +33,7 @@ This repository contains code for the paper _Learned Feature Embeddings for Non-
 - Integration Time: 180 min.
 
 ### Resolution 
-|<img src="scenes/resolution_1.png" height="200" style="padding-right:20px;" />|<img src="scenes/resolution_2.mov" height="200" />|
+|<img src="scenes/resolution_1.png" height="200" style="padding-right:20px;" />|<img src="scenes/resolution_2.mp4" height="200" />|
 |---|---|
 
 - Description: A resolution chart captured at approximately 1 m distance from the wall.
@@ -42,7 +42,7 @@ This repository contains code for the paper _Learned Feature Embeddings for Non-
 - Integration Time: 180 min.
 
 ### Statue 
-|<img src="scenes/statue_1.png" height="200" style="padding-right:20px;" />|<img src="scenes/statue_2.mov" height="200" />|
+|<img src="scenes/statue_1.png" height="200" style="padding-right:20px;" />|<img src="scenes/statue_2.mp4" height="200" />|
 |---|---|
 
 - Description: A white stone statue captured at approximately 1 m distance from the wall.
@@ -51,7 +51,7 @@ This repository contains code for the paper _Learned Feature Embeddings for Non-
 - Integration Time: 180 min.
 
 ### Teaser 
-|<img src="scenes/teaser_1.png" height="200" style="padding-right:20px;" />|<img src="scenes/teaser_2.mov" height="200" style="padding-right:20px;" />|
+|<img src="scenes/teaser_1.png" height="200" style="padding-right:20px;" />|<img src="scenes/teaser_2.mp4" height="200" style="padding-right:20px;" />|
 |---|---|
 
 - Description: The teaser scene used in the paper which includes a number of objects, including a bookshelf, statue, dragon, and disco ball.
@@ -60,7 +60,7 @@ This repository contains code for the paper _Learned Feature Embeddings for Non-
 - Integration Time: 180 min.
 
 
-The realistic scenes above are captured by [this work](https://github.com/computational-imaging/nlos-fk).
+The realistic experimental scenes above have been captured by [this work](https://github.com/computational-imaging/nlos-fk).
 
 ## Reconstruction Results on Synthetic Scenes
 
@@ -68,13 +68,15 @@ The realistic scenes above are captured by [this work](https://github.com/comput
 
 Qualitative Evaluation for NLOS 2D Imaging. Compared with F-K, LCT, and filtered back-projection (BP), we observe that the proposed method
 is able to reconstruct 2D images with clearer boundaries while achieving more
-accurate color rendering.
+accurate color reconstruction.
 
 ## NLOS 2.5D Object Detection
 
 <img src="scenes/detection.png" height="400" style="padding-right:20px;" />
 
-Qualitative end-to-end detection results on synthetic and real data.
+Qualitative end-to-end detection results on synthetic (top) and real (bottom) data.
+The model is only trained on synthetic data. Evaluation of such a model on real data 
+validates its generalization capability.
 
 ## NLOS Classification
 
@@ -124,7 +126,7 @@ sudo apt-get install libglfw3-dev
 sudo apt-get install libopencv-dev
 ```
 
-To render the 3D model, first create a cuda proejct in Nsight and put everything in cuda-render/render folder to the created project and compile. To successfully run the code, modify the folder path and data saving path in [main.cpp](https://github.com/princeton-computational-imaging/NLOSFeatureEmbeddings/blob/6274ff26c31748c760414664c9f3655d7874de1a/cuda-render/render/src/main.cpp#L32). We provide a bunny model for test.
+To render the 3D model, first create a cuda project in Nsight and put everything in cuda-render/render folder to the created project and compile. To successfully run the code, modify the folder path and data saving path in [main.cpp](https://github.com/princeton-computational-imaging/NLOSFeatureEmbeddings/blob/6274ff26c31748c760414664c9f3655d7874de1a/cuda-render/render/src/main.cpp#L32). We provide a bunny model for test.
 
 ### Rendering Settings
 
