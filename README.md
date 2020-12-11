@@ -140,7 +140,7 @@ To render the 3D model, first create a cuda proejct in Nsight and put everything
 
 6) SPAD simulation. The rendered hdr file does not have any noise simulation. One can add simple Gaussian noise in dataloader, but we recommend to employ a computational method for spad simulation to synthesize noise. We adopt the method from [here](https://graphics.unizar.es/data/spad/).
 
-7) Rendered dataset. We provide a motorbike dataset with 3000 motorbike exmaples [here](https://drive.google.com/file/d/183VAD_wuVtwkyvfaBoguUHZgHu065BNW/view?usp=sharing).
+7) Rendered dataset. We provide a motorbike dataset with 3000 motorbike examples [here](https://drive.google.com/file/d/183VAD_wuVtwkyvfaBoguUHZgHu065BNW/view?usp=sharing).
 
 ### Rendering Examples
 
@@ -201,7 +201,7 @@ python eval2.py --datafolder YOUR_DATA_FOLDER --mode fk --netfolder network7_256
 
 ### Deep Learning Settings
 
-We provide our reimplementions of different NLOS methods in python and PyTorch. The python implementations are in DL_inference/utils, and the PyTorch implementations are in DL_inference/utils_pytorch. The file name starts with tf. You may directly check tflct.py, tffk.py and tfphasor.py for NLOS methods LCT (back-projection included), F-K, and Phasor, respectively.
+We provide our reimplementations of different NLOS methods in python and PyTorch. The python implementations are in DL_inference/utils, and the PyTorch implementations are in DL_inference/utils_pytorch. The file name starts with tf. You may directly check tflct.py, tffk.py and tfphasor.py for NLOS methods LCT (back-projection included), F-K, and Phasor, respectively.
 
 
 ## License  
