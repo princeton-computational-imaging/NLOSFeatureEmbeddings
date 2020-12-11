@@ -5,8 +5,7 @@ This repository contains code for the paper _Learned Feature Embeddings for Non-
 ## Reconstruction Results on Real Experimental Scenes
 
 ### Bike 
-|<img src="scenes/bike_1.png" width="200" height="200" style="padding-right:20px;" />|<video height="200" autoplay>
-  <source src="scenes/bike_2.mp4" type="video/mp4"></video>|
+|<img src="scenes/bike_1.png" width="200" height="200" style="padding-right:20px;" />|<img src="scenes/bike_2.gif" height="200"/>|
 |---|---| 
 
 - Description: A bike captured at approximately 1 m distance from the wall.
@@ -15,7 +14,7 @@ This repository contains code for the paper _Learned Feature Embeddings for Non-
 - Integration Time: 180 min.
 
 ### Disco Ball 
-|<img src="scenes/discoball_1.png" width="200" height="200" style="padding-right:20px;" />|<img src="scenes/discoball_2.mp4"  height="200" />|
+|<img src="scenes/discoball_1.png" width="200" height="200" style="padding-right:20px;" />|<img src="scenes/discoball_2.gif"  height="200" />|
 |---|---|
 
 - Description: A specular disco ball captured at approximately 1 m distance from the wall.
@@ -25,7 +24,7 @@ This repository contains code for the paper _Learned Feature Embeddings for Non-
 
 
 ### Dragon 
-|<img src="scenes/dragon_1.png" width="200" height="200" style="padding-right:20px;" />|<img src="scenes/dragon_2.mp4" height="200" />|
+|<img src="scenes/dragon_1.png" width="200" height="200" style="padding-right:20px;" />|<img src="scenes/dragon_2.gif" height="200" />|
 |---|---|
 
 - Description: A glossy dragon captured at approximately 1 m distance from the wall.
@@ -34,7 +33,7 @@ This repository contains code for the paper _Learned Feature Embeddings for Non-
 - Integration Time: 180 min.
 
 ### Resolution 
-|<img src="scenes/resolution_1.png" height="200" style="padding-right:20px;" />|<img src="scenes/resolution_2.mp4" height="200" />|
+|<img src="scenes/resolution_1.png" height="200" style="padding-right:20px;" />|<img src="scenes/resolution_2.gif" height="200" />|
 |---|---|
 
 - Description: A resolution chart captured at approximately 1 m distance from the wall.
@@ -43,7 +42,7 @@ This repository contains code for the paper _Learned Feature Embeddings for Non-
 - Integration Time: 180 min.
 
 ### Statue 
-|<img src="scenes/statue_1.png" height="200" style="padding-right:20px;" />|<img src="scenes/statue_2.mp4" height="200" />|
+|<img src="scenes/statue_1.png" height="200" style="padding-right:20px;" />|<img src="scenes/statue_2.gif" height="200" />|
 |---|---|
 
 - Description: A white stone statue captured at approximately 1 m distance from the wall.
@@ -52,7 +51,7 @@ This repository contains code for the paper _Learned Feature Embeddings for Non-
 - Integration Time: 180 min.
 
 ### Teaser 
-|<img src="scenes/teaser_1.png" height="200" style="padding-right:20px;" />|<img src="scenes/teaser_2.mp4" height="200" style="padding-right:20px;" />|
+|<img src="scenes/teaser_1.png" height="200" style="padding-right:20px;" />|<img src="scenes/teaser_2.gif" height="200" style="padding-right:20px;" />|
 |---|---|
 
 - Description: The teaser scene used in the paper which includes a number of objects, including a bookshelf, statue, dragon, and disco ball.
